@@ -1,0 +1,9 @@
+#static {
+  position: fixed;
+  bottom: 0;
+  
+}
+body {
+  font-family: 'Poppins';
+  font-size: 10px;
+}
