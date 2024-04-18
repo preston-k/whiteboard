@@ -60,3 +60,7 @@ async function createBoard(event) {
 
 document.querySelector('#create').addEventListener('click', createBoard)
 document.querySelector('#joinbut').addEventListener('click', joinBoard)
+
+document.querySelector('#createNew').addEventListener('click', () => {
+  console.log('Hello')
+})

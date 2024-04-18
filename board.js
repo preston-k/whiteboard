@@ -18,7 +18,8 @@ if (username != null || username != '') {
   console.log(username)
   let userid = urlParams.get('userid')
   console.log(userid)
-  if (true==false) {
+  
+  if (true) {
     console.log('Not')
   } else { // Implies that a user is not in the system yet
     firebase.database().ref('boards/'+joincode+'/users').once('value', snapshot => {
@@ -26,7 +27,7 @@ if (username != null || username != '') {
       console.log(usersData);
     });
     await database.ref('boards/' + joincode + '/users/').update({
-      users: 'hello'
+      users: ''
     });
   }
 }
