@@ -57,10 +57,11 @@ async function createBoard(event) {
   });
   window.location.replace('board.html?id='+bId+'&jc='+code)
 }
-
-document.querySelector('#create').addEventListener('click', createBoard)
-document.querySelector('#joinbut').addEventListener('click', joinBoard)
-
-document.querySelector('#createNew').addEventListener('click', () => {
-  console.log('Hello')
-})
+function createNew() {
+  console.log('CreateNew')
+}
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('#create').addEventListener('click', createBoard);
+  document.querySelector('#joinbut').addEventListener('click', joinBoard);
+  document.querySelector('#createNew').addEventListener('click', createNew);
+});
