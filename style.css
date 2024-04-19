@@ -1,7 +1,7 @@
 #static {
   position: fixed;
   bottom: 0;
-  
+  background-color: #5e5e5e5e;
 }
 body {
   font-family: 'Poppins';
@@ -25,4 +25,28 @@ body {
 }
 button {
   cursor: pointer;
+}
+
+.lineItem {
+  border: 2px solid black;
+  width: 75%;
+  min-width: 500px;
+  padding: 10px;
+  padding-top: 0px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  /* cursor: pointer;s */
+}
+.un {
+  /* background-color: black; */
+  font-size: 14px;
+  font-weight: bolder;
+  text-decoration: underline;
+}
+.data {
+  color: black;
+  font-size: 24px;
 }

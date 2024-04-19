@@ -53,7 +53,7 @@ dbRef.on('value', function(snapshot) {
       console.log(submitted)
       // dataCollection.push({ id, username, submitted })
       let board = document.querySelector('#boarddata')
-      boardData+= '<div id='+id+' class=lineItem><p class=un>'+username+'<p class=data>'+submitted+'</p></div>'
+      boardData+= '<div id='+id+' class=lineItem><p class=un>Submitted By: '+username+'<p class=data>'+submitted+'</p></div>'
       board.innerHTML = boardData
     });
   });
