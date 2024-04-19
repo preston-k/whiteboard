@@ -36,5 +36,26 @@ let dbRef = database.ref();
 dbRef.on('value', function(snapshot) {
   const data = snapshot.val();
   console.log('Updated');
-
+  // Run code whenever the database is updated: 
+  // 1. Check under the board id/join code node, 2. look under data/, 3. count how many different nodes are under there, 4. add each node onto the screen.
 });
+
+function createNew() {
+  document.getElementById('newSubForm').style.display = 'block'
+
+}
+
+document.querySelector('#createNew').addEventListener('click', createNew)
+document.querySelector('#close').addEventListener('click', () => {
+  document.getElementById('newSubForm').style.display = 'none'
+})
+
+function submitSubmission() {
+  if (document.querySelector('#submission').value == '') {
+    alert("You can't submit a blank submission!")
+  } else {
+    let submissionId = ''
+  }
+}
+
+document.querySelector('#submit').addEventListener('click', submitSubmission)

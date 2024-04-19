@@ -9,7 +9,13 @@
 </head>
 <body>
   <button id='check'>Check for New Submissions</button>
-  <button id='createNew' onClick='createNew()'>Create a Submission</button>
+  <button id='createNew'>Create a Submission</button>
+  <form id='newSubForm'>
+    <textarea id='submission' placeholder='What are your waiting for?! Start typing!'></textarea>
+    <br>
+    <p id='submit'>Submit</p>
+    <p id='close'>Close</p>
+  </form>
   <div id='boarddata'></div>
   <p id='static'></p>
   <script src='board.js' type='module'></script>

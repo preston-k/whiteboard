@@ -7,3 +7,18 @@ body {
   font-family: 'Poppins';
   font-size: 10px;
 }
+#newSubForm {
+  display: none;
+}
+#submission {
+  width: 50%;
+  height: 100px;
+  font-family: 'Poppins';
+}
+#close, #submit {
+  display: inline;
+  font-size: 14px;
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
