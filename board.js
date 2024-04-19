@@ -14,6 +14,7 @@ const urlParams = new URLSearchParams(window.location.search)
 let board = urlParams.get('id')
 let joincode = urlParams.get('jc')
 let username = urlParams.get('name')
+let uid = urlParams.get('userid')
 if (username != null || username != '') {
   console.log(username)
   let userid = urlParams.get('userid')
@@ -31,14 +32,36 @@ if (username != null || username != '') {
     });
   }
 }
-let dbRef = database.ref();
+let dbRef = database.ref()
 
 dbRef.on('value', function(snapshot) {
   const data = snapshot.val();
   console.log('Updated');
   // Run code whenever the database is updated: 
-  // 1. Check under the board id/join code node, 2. look under data/, 3. count how many different nodes are under there, 4. add each node onto the screen.
-});
+  // TO DO:   1. Check under the board id/join code node, 2. look under data/, 3. count how many different nodes are under there, 4. add each node onto the screen.
+  let dataRef = database.ref('boards/'+joincode+'/data')
+  let count = 0
+  dataRef.once('value', function(snapshot) {
+    let boardData = ''
+    let dataCollection = []
+    snapshot.forEach(function(childSnapshot) {
+      let id = childSnapshot.child('id').val()
+      console.log(id)
+      let username = childSnapshot.child('username').val()
+      console.log(username)
+      let submitted = childSnapshot.child('submitted').val()
+      console.log(submitted)
+      // dataCollection.push({ id, username, submitted })
+      let board = document.querySelector('#boarddata')
+      boardData+= '<div id='+id+' class=lineItem><p class=un>'+username+'<p class=data>'+submitted+'</p></div>'
+      board.innerHTML = boardData
+    });
+  });
+  
+  for (i in count) {
+    console.log(i)
+  }
+})
 
 function createNew() {
   document.getElementById('newSubForm').style.display = 'block'
@@ -50,7 +73,7 @@ document.querySelector('#close').addEventListener('click', () => {
   document.getElementById('newSubForm').style.display = 'none'
 })
 
-function submitSubmission() {
+async function submitSubmission() {
   if (document.querySelector('#submission').value == '') {
     alert("You can't submit a blank submission!")
   } else {
@@ -62,7 +85,18 @@ function submitSubmission() {
     console.log('ts='+ts)
     let submission = document.querySelector('#submission').value
     console.log(submission)
-    
+    try {
+      await database.ref('boards/' + jc + '/data/'+submissionId).update({ 
+        submitted: submission,
+        ts: ts,
+        username: submitter,
+        id: submissionId,
+        userid: uid,
+      }) 
+      document.getElementById('newSubForm').style.display = 'none'
+    } catch (error) {
+      alert('Sorry, and error was detected. Your submission was not posted. Please resubmit your submission!')
+    }
   }
 }
 
