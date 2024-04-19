@@ -2,6 +2,7 @@
   position: fixed;
   bottom: 0;
   background-color: #5e5e5e5e;
+  margin-top: 10px;
 }
 body {
   font-family: 'Poppins';
@@ -15,6 +16,9 @@ body {
   min-width: 500px;
   height: 100px;
   font-family: 'Poppins';
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
 }
 #close, #submit {
   display: inline;
@@ -49,4 +53,8 @@ button {
 .data {
   color: black;
   font-size: 24px;
+}
+
+#parti {
+  font-size: 20px;
 }

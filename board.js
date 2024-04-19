@@ -93,6 +93,7 @@ async function submitSubmission() {
         id: submissionId,
         userid: uid,
       }) 
+      document.querySelector('#submission').value = ''
       document.getElementById('newSubForm').style.display = 'none'
     } catch (error) {
       alert('Sorry, and error was detected. Your submission was not posted. Please resubmit your submission!')
