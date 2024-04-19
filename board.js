@@ -54,7 +54,15 @@ function submitSubmission() {
   if (document.querySelector('#submission').value == '') {
     alert("You can't submit a blank submission!")
   } else {
-    let submissionId = ''
+    let submissionId = self.crypto.randomUUID()
+    console.log('sid='+submissionId)
+    let submitter = username
+    console.log('submitter='+submitter)
+    let ts = new Date().toLocaleString('en-US', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone });
+    console.log('ts='+ts)
+    let submission = document.querySelector('#submission').value
+    console.log(submission)
+    
   }
 }
 
