@@ -23,6 +23,7 @@ function joincode() {
   return parseInt(digits.join(''));
 }
 
+
 let code = joincode();
 let userid = self.crypto.randomUUID()
 async function joinBoard(event) {

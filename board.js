@@ -9,7 +9,6 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig) 
 let database = firebase.database() 
-
 const urlParams = new URLSearchParams(window.location.search)
 let board = urlParams.get('id')
 let joincode = urlParams.get('jc')
@@ -19,7 +18,6 @@ if (username != null || username != '') {
   console.log(username)
   let userid = urlParams.get('userid')
   console.log(userid)
-  
   if (true) {
     console.log('Not')
   } else { // Implies that a user is not in the system yet
@@ -33,7 +31,6 @@ if (username != null || username != '') {
   }
 }
 let dbRef = database.ref()
-
 dbRef.on('value', function(snapshot) {
   const data = snapshot.val();
   console.log('Updated');
@@ -57,7 +54,6 @@ dbRef.on('value', function(snapshot) {
       board.innerHTML = boardData
     });
   });
-  
   for (i in count) {
     console.log(i)
   }
@@ -65,7 +61,6 @@ dbRef.on('value', function(snapshot) {
 
 function createNew() {
   document.getElementById('newSubForm').style.display = 'block'
-
 }
 
 document.querySelector('#createNew').addEventListener('click', createNew)
@@ -101,4 +96,15 @@ async function submitSubmission() {
   }
 }
 
+async function edit() {
+  document.querySelector('#boarddata').style.display = 'none'
+  document.querySelector('#viewsubs').style.display = 'block'
+}
+async function close() {
+  document.querySelector('#boarddata').style.display = 'block'
+  document.querySelector('#viewsubs').style.display = 'none'
+}
 document.querySelector('#submit').addEventListener('click', submitSubmission)
+document.querySelector('#edit').addEventListener('click', edit)
+
+document.querySelector('#closeEdit').addEventListener('click', close)

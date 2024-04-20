@@ -42,7 +42,8 @@ button {
   margin-right: auto;
   margin-top: 5px;
   margin-bottom: 5px;
-  /* cursor: pointer;s */
+  /* background-color: lightgrey; */
+  /* cursor: pointer; */
 }
 .un {
   /* background-color: black; */
@@ -54,7 +55,15 @@ button {
   color: black;
   font-size: 24px;
 }
-
 #parti {
   font-size: 20px;
+}
+#viewsubs {
+  display: none;
+}
+
+#closeEdit {
+  color: red;
+  text-decoration: underline;
+  cursor: pointer;
 }
