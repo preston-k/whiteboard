@@ -96,6 +96,42 @@ async function submitSubmission() {
     }
   }
 }
+async function deleteSubmission(subId) {
+  console.log('Delete')
+  console.log(subId)
+  
+}
+async function editSubmission(subId) {
+  console.log('Edit');
+  console.log(subId);
+  document.querySelector('#editing-' + subId).style.display = 'block';
+  document.querySelector('#view-' + subId).style.display = 'none';
+  document.querySelector('#save-' + subId).style.display = 'inline';
+  console.log(jc)
+  database.ref(`boards/${joincode}/data/${subId}/submitted`).once('value', snapshot => {
+    const data = snapshot.val()
+    document.querySelector('#textarea-' + subId).value = data
+    console.log(data)
+  });
+}
+async function saveEdit(subId) {
+  console.log('Save Edits')
+  console.log(subId)
+  let editing = document.querySelector('#textarea-'+subId).value
+  console.log(editing)
+  try {
+    await database.ref('boards/' + joincode + '/data/'+subId).update({ 
+      submitted: editing
+    })
+    document.querySelector('#text-'+subId).style.display = 'inline' 
+    setTimeout(() => {
+      document.querySelector('#text-'+subId).style.display = 'none' 
+    }, 3000);
+  } catch (error) {
+    alert('Sorry, and error was detected. Your submission was not updated. Please try again!')
+  }
+  
+}
 
 async function edit() {
   console.log('Edit')
@@ -108,22 +144,41 @@ async function edit() {
     const dataSnapshot = await database.ref('boards/'+joincode+'/data').once('value')
     const data = dataSnapshot.val()
     if (data) {
-      Object.values(data).forEach((dataNode) => {
+      Object.values(data).forEach(dataNode => {
         if (dataNode.userid === uid) {
           subcount += 1
           console.log(dataNode.submitted)
-          let subid = dataNode.id
-          subs += '<div class=subviews><p>'+dataNode.submitted+'</p><button id=;edit-'+subid+'class=editbut>Edit</button><button id="delete-' + subid + '">Delete</button></div>';
+          subid = dataNode.id
+          subs += '<div class=subviews><div class="editing" id="editing-'+subid+'"><textarea id="textarea-'+subid+'" class=editBox></textarea></div><div class="subViewer"><p id="view-'+subid+'">' + dataNode.submitted + '</p></div><button id="edit-' + subid + '" class=editbut>Edit</button><button id="delete-' + subid + '" class=deletebut>Delete</button><button id="save-'+subid+'" class=savebut>Save</button><p class=savedtext id="text-'+subid+'">Sucessfully Saved!</p></div>'
         }
-      });
+      })
       
-      document.querySelector('#subcount').innerHTML = 'You have '+subcount+' submissions.'
+      document.querySelector('#subcount').innerHTML = 'You have ' + subcount + ' submissions.'
       document.querySelector('#submissionview').innerHTML = subs
+      document.querySelectorAll('.deletebut').forEach(button => {
+        button.addEventListener('click', function() {
+          let subId = this.id.slice(7, 100)
+          deleteSubmission(subId)
+        })
+      })
+      document.querySelectorAll('.editbut').forEach(button => {
+        button.addEventListener('click', function() {
+          let subId = this.id.slice(5, 100)
+          editSubmission(subId)
+        })
+      })
+      document.querySelectorAll('.savebut').forEach(button => {
+        button.addEventListener('click', function() {
+          let subId = this.id.slice(5, 100)
+          saveEdit(subId)
+        })
+      })
     }
   } catch (error) {
     console.error('Error fetching data:', error)
   }
 }
+
 
 async function close() {
   document.querySelector('#boarddata').style.display = 'block'
@@ -138,9 +193,9 @@ function editSub(submissionId) {
   console.log(submissionId)
 }
 
-document.querySelectorAll('.editbut').forEach(button => {
-  button.addEventListener('click', function(event) {
-      let buttonId = event.target.id
-      console.log(' with ID:', buttonId, 'was clicked')
-  });
-});
+document.querySelector('#leave').addEventListener('click', () => {
+  console.log('leave?')
+  if (confirm('Are you sure you would like to leave this board?\n\nTo proceed, click "OK". To cancel, click "Cancel"')) {
+    window.location.replace('/')
+  }
+})

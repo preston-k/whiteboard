@@ -72,3 +72,4 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelector('#joinbut').addEventListener('click', joinBoard);
   document.querySelector('#createNew').addEventListener('click', createNew);
 });
+
