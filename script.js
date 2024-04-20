@@ -34,12 +34,18 @@ async function joinBoard(event) {
     let boardid;
     await firebase.database().ref('boards').child(codeInput).once('value').then(function(snapshot) {
       boardid = snapshot.val().id;
-    });
-    console.log(boardid)
+    })
     let name = prompt('What is your name?')
+    // let ucount = await firebase.database().ref('boards/' + codeinput + '/users/users').once('value').then(snapshot => {
+    //   let value = snapshot.val()
+    //   console.log(value)
+    //   return value
+    // });
+    // console.log(ucount)
     window.location.replace('/board.html?id='+boardid+'&jc='+codeInput + '&name='+name+'&userid='+userid)
   } catch (error) {
-    alert('This whiteboard was not found. Please check your joincode and try again. \n \nERR: NOT FOUND')
+    alert('This whiteboard was not found. Please check your joincode and try again. \n \nERR: nf-fb-jc')
+    reload()
   }
 }
 
@@ -54,7 +60,7 @@ async function createBoard(event) {
     id: bId
   });
   await database.ref('boards/' + code + '/users/').update({
-    users: ''
+    users: 0
   });
   window.location.replace('board.html?id='+bId+'&jc='+code)
 }

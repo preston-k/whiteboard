@@ -19,7 +19,7 @@ if (username != null || username != '') {
   let userid = urlParams.get('userid')
   console.log(userid)
   if (true) {
-    console.log('Not')
+    console.log('User in System')
   } else { // Implies that a user is not in the system yet
     firebase.database().ref('boards/'+joincode+'/users').once('value', snapshot => {
       const usersData = snapshot.val();
@@ -33,9 +33,10 @@ if (username != null || username != '') {
 let dbRef = database.ref()
 dbRef.on('value', function(snapshot) {
   const data = snapshot.val();
-  console.log('Updated');
+  console.log('DB Updated');
   // Run code whenever the database is updated: 
   // TO DO:   1. Check under the board id/join code node, 2. look under data/, 3. count how many different nodes are under there, 4. add each node onto the screen.
+  // let user = database.ref('boards/'+joincode+'/users')
   let dataRef = database.ref('boards/'+joincode+'/data')
   let count = 0
   dataRef.once('value', function(snapshot) {
@@ -97,9 +98,33 @@ async function submitSubmission() {
 }
 
 async function edit() {
+  console.log('Edit')
   document.querySelector('#boarddata').style.display = 'none'
   document.querySelector('#viewsubs').style.display = 'block'
+  let subcount = 0
+  let subs = ''
+  let subid = ''
+  try {
+    const dataSnapshot = await database.ref('boards/'+joincode+'/data').once('value')
+    const data = dataSnapshot.val()
+    if (data) {
+      Object.values(data).forEach((dataNode) => {
+        if (dataNode.userid === uid) {
+          subcount += 1
+          console.log(dataNode.submitted)
+          let subid = dataNode.id
+          subs += '<div class=subviews><p>'+dataNode.submitted+'</p><button id=;edit-'+subid+'class=editbut>Edit</button><button id="delete-' + subid + '">Delete</button></div>';
+        }
+      });
+      
+      document.querySelector('#subcount').innerHTML = 'You have '+subcount+' submissions.'
+      document.querySelector('#submissionview').innerHTML = subs
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error)
+  }
 }
+
 async function close() {
   document.querySelector('#boarddata').style.display = 'block'
   document.querySelector('#viewsubs').style.display = 'none'
@@ -108,3 +133,14 @@ document.querySelector('#submit').addEventListener('click', submitSubmission)
 document.querySelector('#edit').addEventListener('click', edit)
 
 document.querySelector('#closeEdit').addEventListener('click', close)
+
+function editSub(submissionId) {
+  console.log(submissionId)
+}
+
+document.querySelectorAll('.editbut').forEach(button => {
+  button.addEventListener('click', function(event) {
+      let buttonId = event.target.id
+      console.log(' with ID:', buttonId, 'was clicked')
+  });
+});
