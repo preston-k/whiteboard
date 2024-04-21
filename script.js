@@ -9,9 +9,7 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig) 
-
 let database = firebase.database() 
-
 function joincode() {
   let digits = [];
   while (digits.length < 6) {
@@ -22,7 +20,6 @@ function joincode() {
   }
   return parseInt(digits.join(''));
 }
-
 
 let code = joincode();
 let userid = self.crypto.randomUUID()
@@ -71,3 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // document.querySelector('#createNew').addEventListener('click', createNew);
 });
 
+/** @type {typeof import("./static.json")} */
+const data = await fetch("/static.json").then((x) => x.json())
+let version = data.version
+console.log('Version: '+version)

@@ -9,7 +9,10 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig) 
 let database = firebase.database() 
-
+/** @type {typeof import("./static.json")} */
+const data = await fetch("/static.json").then((x) => x.json())
+let version = data.version
+console.log('Version: '+version)
 const urlParams = new URLSearchParams(window.location.search)
 let board = urlParams.get('id')
 let joincode = urlParams.get('jc')
