@@ -229,3 +229,46 @@ document.querySelector('#leave').addEventListener('click', () => {
     window.location.replace('/')
   }
 })
+let role = ''
+let clickCount = 0
+console.log(uid)
+console.log(username)
+async function changerole() {
+  if (uid == null || username == null) {
+    role = 'host'
+  } else {
+    role = 'participant'
+  }
+  console.log('cRole='+role)
+  clickCount += 1
+  console.log(clickCount)
+  setTimeout(() => {
+    clickCount = 0
+    console.log('Role Switch Timed Out. clickCount='+clickCount)
+  }, 3000);
+  if (clickCount >= 5) {
+    console.log('Switch role')
+    clickCount = 0
+    if (role == 'participant') {
+      let userSnapshot = await database.ref(`boards/${joincode}/users/users`).once('value')
+      let data = userSnapshot.val()
+      data -= 1
+      await database.ref(`boards/${joincode}/users/`).update({
+        users: data
+      })
+      window.location.replace('/board.html?id='+board+'&jc='+joincode)
+    }  else if (role == 'host') {
+      console.log('Host')
+      let userSnapshot = await database.ref(`boards/${joincode}/users/users`).once('value')
+      let data = userSnapshot.val()
+      data += 1
+      await database.ref(`boards/${joincode}/users/`).update({
+        users: data
+      })
+      let userName = prompt('What is your name?')
+      let uid = self.crypto.randomUUID()
+      window.location.replace('/board.html?id='+board+'&jc='+joincode+'&name='+userName+'&userid='+uid)
+    }
+  } 
+}
+document.querySelector('#changerole').addEventListener('click', changerole)

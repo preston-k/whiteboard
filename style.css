@@ -123,3 +123,11 @@ button {
 .feedbacklink:hover {
   cursor: pointer;
 }
+#changerole {
+  height: 100px;
+  width: 100px;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
