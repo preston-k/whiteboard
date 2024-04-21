@@ -38,12 +38,10 @@ async function joinBoard(event) {
     let userSnapshot = await database.ref(`boards/${codeInput}/users/users`).once('value')
     let data = userSnapshot.val()
     data += 1
-
+    let name = prompt('What is your name?')
     await database.ref(`boards/${codeInput}/users/`).update({
       users: data
     })
-
-    let name = prompt('What is your name?')
     window.location.replace(`/board.html?id=${boardid}&jc=${codeInput}&name=${name}&userid=${userid}`)
   } catch (error) {
     alert('This whiteboard was not found. Please check your joincode and try again. \n \nERR: nf-fb-jc')
