@@ -264,11 +264,11 @@ async function changerole() {
       console.log('Host')
       let userSnapshot = await database.ref(`boards/${joincode}/users/users`).once('value')
       let data = userSnapshot.val()
+      let userName = prompt('What is your name?')
       data += 1
       await database.ref(`boards/${joincode}/users/`).update({
         users: data
       })
-      let userName = prompt('What is your name?')
       let uid = self.crypto.randomUUID()
       window.location.replace('/board.html?id='+board+'&jc='+joincode+'&name='+userName+'&userid='+uid)
     }
