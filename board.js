@@ -91,6 +91,7 @@ async function submitSubmission() {
       }) 
       document.querySelector('#submission').value = ''
       document.getElementById('newSubForm').style.display = 'none'
+      
     } catch (error) {
       alert('Sorry, and error was detected. Your submission was not posted. Please resubmit your submission!')
     }
@@ -99,7 +100,9 @@ async function submitSubmission() {
 async function deleteSubmission(subId) {
   console.log('Delete')
   console.log(subId)
-  
+  firebase.database().ref(`boards/${joincode}/data/${subId}`).remove()
+  document.querySelector('#boarddata').style.display = 'block'
+  document.querySelector('#viewsubs').style.display = 'none'
 }
 async function editSubmission(subId) {
   console.log('Edit');
