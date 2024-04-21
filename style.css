@@ -110,3 +110,16 @@ button {
 #usercount {
   display: none;
 }
+
+.feedbacklink {
+  position: fixed;
+  bottom: 0;
+  color: blue;
+  right: 0;
+  margin-right: 10px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.feedbacklink:hover {
+  cursor: pointer;
+}
