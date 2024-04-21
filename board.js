@@ -40,7 +40,7 @@ dbRef.on('value', function(snapshot) {
     const data = snapshot.val()
     console.log(data)
     usercount.innerHTML = 'Users: '+ data
-  });
+  })
   // Run code whenever the database is updated: 
   // TO DO:   1. Check under the board id/join code node, 2. look under data/, 3. count how many different nodes are under there, 4. add each node onto the screen.
   // let user = database.ref('boards/'+joincode+'/users')
@@ -171,8 +171,11 @@ async function edit() {
           subs += '<div class=subviews><div class="editing" id="editing-'+subid+'"><textarea id="textarea-'+subid+'" class=editBox></textarea></div><div class="subViewer"><p id="view-'+subid+'">' + dataNode.submitted + '</p></div><button id="edit-' + subid + '" class=editbut>Edit</button><button id="delete-' + subid + '" class=deletebut>Delete</button><button id="save-'+subid+'" class=savebut>Save</button><p class=savedtext id="text-'+subid+'">Sucessfully Saved!</p></div>'
         }
       })
-      
-      document.querySelector('#subcount').innerHTML = 'You have ' + subcount + ' submissions.'
+      if (subcount == '1') {
+        document.querySelector('#subcount').innerHTML = 'You have ' + subcount + ' submission.'
+      } else {
+        document.querySelector('#subcount').innerHTML = 'You have ' + subcount + ' submissions.'
+      }
       document.querySelector('#submissionview').innerHTML = subs
       document.querySelectorAll('.deletebut').forEach(button => {
         button.addEventListener('click', function() {

@@ -79,7 +79,7 @@ button {
 .subviews {
   border: 2px solid black;
   width: 75%;
-  min-width: 500px;
+  min-width: 350px;
   padding: 10px;
   padding-top: 0px;
   display: block;

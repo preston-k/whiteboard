@@ -18,7 +18,7 @@ staticbox.innerHTML = staticinfo
 console.log('bId:'+boardId+'jc:' + jc + 'u:' + name + 'uid:'+userid)
 
 if (userid == null || userid == '') {
-  alert('Your board has been created! To join this board, go to whiteboard.prestonkwei.com and type in joincode: '+ jc)
+  // alert('Your board has been created! To join this board, go to whiteboard.prestonkwei.com and type in joincode: '+ jc)
   document.querySelector('#createNew').style.display = 'none'
   document.querySelector('#edit').style.display = 'none'
   // document.querySelector('#joinaspart').style.display = 'none'
