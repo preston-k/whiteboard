@@ -9,6 +9,8 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig) 
 let database = firebase.database() 
+const blocklist = ['fuck', 'shit', 'ass', 'nigger', 'bitch', 'bastard', 'slut', 'dick', 'cunt', 'pussy', 'whore', 'fag', 'damn', 'douche', 'twat', 'cock', 'bollocks', 'arsehole', 'asshole', 'bugger', 'wanker', 'prick', 'tits', 'cum', 'boob', 'clit', 'fanny', 'piss', 'dildo', 'dyke', 'slag', 'motherfucker', 'goddamn', 'bint', 'bellend', 'muff', 'paki', 'chink', 'coon', 'kike', 'spic', 'faggot', 'poof', 'nonce', 'tranny', 'gringo', 'jizz', 'minge', 'nazi', 'bollock', 'bollox', 'shite', 'retard', 'cumshot', 'gook', 'beaner', 'skeet', 'tit', 'knob', 'felch', 'kunt', 'pecker', 'gooch', 'punani', 'taint', 'wang', 'wank', 'poon', 'schlong', 'fuckwit', 'poontang', 'gash', 'snatch', 'fuckboy', 'cumdump', 'shithead', 'fuckface', 'skank', 'hoe', 'bimbo', 'sod', 'coochie', 'thot', 'douchebag', 'arse'] // ChatGPT generated word list to block if these words get added to the submissions.
+
 const urlParams = new URLSearchParams(window.location.search)
 let board = urlParams.get('id')
 let joincode = urlParams.get('jc')
@@ -79,27 +81,35 @@ async function submitSubmission() {
   if (document.querySelector('#submission').value == '') {
     alert("You can't submit a blank submission!")
   } else {
-    let submissionId = self.crypto.randomUUID()
-    console.log('sid='+submissionId)
-    let submitter = username
-    console.log('submitter='+submitter)
-    let ts = new Date().toLocaleString('en-US', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone });
-    console.log('ts='+ts)
-    let submission = document.querySelector('#submission').value
-    console.log(submission)
-    try {
-      await database.ref('boards/' + jc + '/data/'+submissionId).update({ 
-        submitted: submission,
-        ts: ts,
-        username: submitter,
-        id: submissionId,
-        userid: uid,
-      }) 
-      document.querySelector('#submission').value = ''
-      document.getElementById('newSubForm').style.display = 'none'
-      
-    } catch (error) {
-      alert('Sorry, and error was detected. Your submission was not posted. Please resubmit your submission!')
+    if (document.querySelector('#submission').value.includes("<") || document.querySelector('#submission').value.includes(">")) {
+      alert('Sorry, your submission CANNOT contain the characters "<" or ">". Please edit your submission and try again.')
+    } else {
+      if (blocklist.some(word => document.querySelector('#submission').value.toLowerCase().includes(word))) {
+        alert('Sorry, your submission contains a blocked word. Please edit your submission and try again.')
+      } else {
+        let submissionId = self.crypto.randomUUID()
+        console.log('sid='+submissionId)
+        let submitter = username
+        console.log('submitter='+submitter)
+        let ts = new Date().toLocaleString('en-US', { timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone });
+        console.log('ts='+ts)
+        let submission = document.querySelector('#submission').value
+        console.log(submission)
+        try {
+          await database.ref('boards/' + jc + '/data/'+submissionId).update({ 
+            submitted: submission,
+            ts: ts,
+            username: submitter,
+            id: submissionId,
+            userid: uid,
+          }) 
+          document.querySelector('#submission').value = ''
+          document.getElementById('newSubForm').style.display = 'none'
+          
+        } catch (error) {
+          alert('Sorry, and error was detected. Your submission was not posted. Please resubmit your submission!')
+        }
+      }
     }
   }
 }
