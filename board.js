@@ -34,6 +34,12 @@ let dbRef = database.ref()
 dbRef.on('value', function(snapshot) {
   const data = snapshot.val();
   console.log('DB Updated');
+
+  database.ref(`boards/${joincode}/users/users`).once('value', snapshot => {
+    const data = snapshot.val()
+    console.log(data)
+    usercount.innerHTML = 'Users: '+ data
+  });
   // Run code whenever the database is updated: 
   // TO DO:   1. Check under the board id/join code node, 2. look under data/, 3. count how many different nodes are under there, 4. add each node onto the screen.
   // let user = database.ref('boards/'+joincode+'/users')
@@ -198,7 +204,15 @@ function editSub(submissionId) {
 
 document.querySelector('#leave').addEventListener('click', () => {
   console.log('leave?')
-  if (confirm('Are you sure you would like to leave this board?\n\nTo proceed, click "OK". To cancel, click "Cancel"')) {
+  if (confirm('Are you sure you would like to leave this board? You CANNOT rejoin as the same user.\n\nTo proceed, click "OK". To cancel, click "Cancel"')) {
+    database.ref(`boards/${joincode}/users/users`).once('value', snapshot => {
+      let data = snapshot.val()
+      data -= 1
+      console.log(data)
+      database.ref('boards/' + joincode + '/users/').update({ 
+        users: data
+      }) 
+    });
     window.location.replace('/')
   }
 })

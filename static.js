@@ -8,6 +8,9 @@ let jc = urlParams.get('jc')
 staticinfo = 'Board ID: ' + boardId + ' || Join Code: ' + jc // + ' || Username: ' + name + ' || User ID: ' + userid
 if (userid == null) {
   staticinfo += ' || You have joined as a host.'
+  document.querySelector('#joincode').style.display = 'inline'
+  document.querySelector('#joincode').innerHTML = 'Join Code: '+jc+' || '
+  document.querySelector('#usercount').style.display = 'inline'
 } else {
   staticinfo += ' || You have joined as a participant.'
 }

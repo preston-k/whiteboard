@@ -31,23 +31,26 @@ async function joinBoard(event) {
     event.preventDefault()
     let codeInput = document.getElementById('jc').value
     console.log(codeInput)
-    let boardid;
-    await firebase.database().ref('boards').child(codeInput).once('value').then(function(snapshot) {
-      boardid = snapshot.val().id;
+
+    let snapshot = await firebase.database().ref('boards').child(codeInput).once('value')
+    let boardid = snapshot.val().id
+
+    let userSnapshot = await database.ref(`boards/${codeInput}/users/users`).once('value')
+    let data = userSnapshot.val()
+    data += 1
+
+    await database.ref(`boards/${codeInput}/users/`).update({
+      users: data
     })
+
     let name = prompt('What is your name?')
-    // let ucount = await firebase.database().ref('boards/' + codeinput + '/users/users').once('value').then(snapshot => {
-    //   let value = snapshot.val()
-    //   console.log(value)
-    //   return value
-    // });
-    // console.log(ucount)
-    window.location.replace('/board.html?id='+boardid+'&jc='+codeInput + '&name='+name+'&userid='+userid)
+    window.location.replace(`/board.html?id=${boardid}&jc=${codeInput}&name=${name}&userid=${userid}`)
   } catch (error) {
     alert('This whiteboard was not found. Please check your joincode and try again. \n \nERR: nf-fb-jc')
     reload()
   }
 }
+
 
 // // // // // // // // // // // // // // // // // // // // 
 async function createBoard(event) {

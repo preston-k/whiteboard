@@ -106,3 +106,7 @@ button {
   margin-left: 10px;
   display: none;
 }
+
+#usercount {
+  display: none;
+}
