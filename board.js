@@ -9,7 +9,6 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig) 
 let database = firebase.database() 
-const blocklist = ['fuck', 'shit', 'ass', 'nigger', 'bitch', 'bastard', 'slut', 'dick', 'cunt', 'pussy', 'whore', 'fag', 'damn', 'douche', 'twat', 'cock', 'bollocks', 'arsehole', 'asshole', 'bugger', 'wanker', 'prick', 'tits', 'cum', 'boob', 'clit', 'fanny', 'piss', 'dildo', 'dyke', 'slag', 'motherfucker', 'goddamn', 'bint', 'bellend', 'muff', 'paki', 'chink', 'coon', 'kike', 'spic', 'faggot', 'poof', 'nonce', 'tranny', 'gringo', 'jizz', 'minge', 'nazi', 'bollock', 'bollox', 'shite', 'retard', 'cumshot', 'gook', 'beaner', 'skeet', 'tit', 'knob', 'felch', 'kunt', 'pecker', 'gooch', 'punani', 'taint', 'wang', 'wank', 'poon', 'schlong', 'fuckwit', 'poontang', 'gash', 'snatch', 'fuckboy', 'cumdump', 'shithead', 'fuckface', 'skank', 'hoe', 'bimbo', 'sod', 'coochie', 'thot', 'douchebag', 'arse'] // ChatGPT generated word list to block if these words get added to the submissions.
 
 const urlParams = new URLSearchParams(window.location.search)
 let board = urlParams.get('id')
@@ -76,6 +75,7 @@ document.querySelector('#createNew').addEventListener('click', createNew)
 document.querySelector('#close').addEventListener('click', () => {
   document.getElementById('newSubForm').style.display = 'none'
 })
+const blocklist = ['fuck', 'shit', 'ass', 'nigger', 'bitch', 'bastard', 'slut', 'dick', 'cunt', 'pussy', 'whore', 'fag', 'damn', 'douche', 'twat', 'cock', 'bollocks', 'arsehole', 'asshole', 'bugger', 'wanker', 'prick', 'tits', 'cum', 'boob', 'clit', 'fanny', 'piss', 'dildo', 'dyke', 'slag', 'motherfucker', 'goddamn', 'bint', 'bellend', 'muff', 'paki', 'chink', 'coon', 'kike', 'spic', 'faggot', 'poof', 'nonce', 'tranny', 'gringo', 'jizz', 'minge', 'nazi', 'bollock', 'bollox', 'shite', 'retard', 'cumshot', 'gook', 'beaner', 'skeet', 'tit', 'knob', 'felch', 'kunt', 'pecker', 'gooch', 'punani', 'taint', 'wang', 'wank', 'poon', 'schlong', 'fuckwit', 'poontang', 'gash', 'snatch', 'fuckboy', 'cumdump', 'shithead', 'fuckface', 'skank', 'hoe', 'bimbo', 'sod', 'coochie', 'thot', 'douchebag', 'arse'] // ChatGPT generated word list to block if these words get added to the submissions.
 
 async function submitSubmission() {
   if (document.querySelector('#submission').value == '') {
