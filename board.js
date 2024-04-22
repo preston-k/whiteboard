@@ -61,10 +61,24 @@ dbRef.on('value', function(snapshot) {
       console.log(submitted)
       // dataCollection.push({ id, username, submitted })
       let board = document.querySelector('#boarddata')
-      boardData+= '<div id='+id+' class=lineItem><p class=un>Submitted By: '+username+'<p class=data>'+submitted+'</p></div>'
+      boardData+= '<div id='+id+' class=lineItem><p class=un>Submitted By: '+username+'<p class=data>'+submitted+'</p><p class=globalDelete id="globalDelete-'+id+'">Delete</p></div>'
       board.innerHTML = boardData
-    });
-  });
+      if (uid == null || uid == '') {
+        document.querySelectorAll('.globalDelete').forEach(element => {
+          element.style.display = 'block'
+        });
+      }
+      
+      document.querySelectorAll('.globalDelete').forEach(button => {
+        button.addEventListener('click', function() {
+          let subId = this.id
+          subId = subId.slice(13, 100)
+          console.log(subId)
+          firebase.database().ref(`boards/${joincode}/data/${subId}`).remove()
+        })
+      })
+    })
+  })
   for (i in count) {
     console.log(i)
   }
@@ -274,4 +288,4 @@ async function changerole() {
     }
   } 
 }
-document.querySelector('#changerole').addEventListener('click', changerole)
+
