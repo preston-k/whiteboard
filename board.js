@@ -18,6 +18,12 @@ let board = urlParams.get('id')
 let joincode = urlParams.get('jc')
 let username = urlParams.get('name')
 let uid = urlParams.get('userid')
+
+if (board == null || joincode == null) {
+  document.querySelector('body').style.display = 'none'
+  alert("Sorry, you have joined a board that doesn't exist! Please enter a join code on the next page.")
+  window.location.replace('/')
+}
 if (username != null || username != '') {
   console.log(username)
   let userid = urlParams.get('userid')
