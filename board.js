@@ -164,7 +164,7 @@ async function saveEdit(subId) {
       document.querySelector('#text-'+subId).style.display = 'none' 
     }, 3000);
   } catch (error) {
-    alert('Sorry, and error was detected. Your submission was not updated. Please try again!')
+    alert('Sorry, an error was detected. Your submission was not updated. Please try again!')
   }
   
 }
@@ -289,3 +289,4 @@ async function changerole() {
   } 
 }
 
+document.querySelector('#changerole').addEventListener('click', changerole)
