@@ -296,3 +296,24 @@ async function changerole() {
 }
 
 document.querySelector('#changerole').addEventListener('click', changerole)
+
+
+let qrdata = 'https://whiteboard.prestonkwei.com/join?immediate=true&jc='+urlParams.get('jc')
+console.log(qrdata)
+let imageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${qrdata}`
+
+document.getElementById('qrimg').src = imageUrl;
+
+function hideQr() {
+  document.querySelector('#desktoptool').style.display = 'block'
+  document.querySelector('#boarddata').style.display = 'block'
+  document.querySelector('#qrcode').style.display = 'none'
+}
+function showQr() {
+  document.querySelector('#desktoptool').style.display = 'none'
+  document.querySelector('#boarddata').style.display = 'none' 
+  document.querySelector('#qrcode').style.display = 'block' 
+}
+
+document.querySelector('#showQr').addEventListener('click', showQr)
+document.querySelector('#closeQr').addEventListener('click', hideQr)

@@ -41,7 +41,7 @@ async function joinBoard(event) {
     })
     window.location.replace(`/board.html?id=${boardid}&jc=${codeInput}&name=${name}&userid=${userid}`)
   } catch (error) {
-    alert('This whiteboard was not found. Please check your joincode and try again. \n \nERR: nf-fb-jc')
+    alert('This whiteboard was not found. Please check your joincode and try again. \n \nERR: Not Found: Firebase Join Code')
     reload()
   }
 }

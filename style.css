@@ -142,3 +142,39 @@ button {
   margin-left: auto;
   display: none;
 }
+#link {
+  color: blue;
+}
+
+#redirectnotice {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+}
+#qrcode {
+  text-align: center;
+  font-weight: bolder;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+  position: relative;
+  display: none;
+  
+}
+#qrimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-block: 1em;
+  /* height: 500px; */
+  width: 30%;
+}
+#closeQr {
+  height: 10%;
+  position: absolute;
+  right: 0;
+  top: 0; 
+  min-height: 20px;
+  cursor: pointer;
+}

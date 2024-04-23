@@ -15,9 +15,12 @@
   <h1 id='joincode'></h1>
   <h1 id='usercount'>Users: 0</h1>
   <br>
-  <button id='leave'>Leave this Board</button></a>
-  <button id='createNew'>Create a Submission</button>
-  <button id='edit'>View your submissions</button>
+  <div id='desktoptool'>
+    <button id='leave'>Leave this Board</button></a>
+    <button id='createNew'>Create a Submission</button>
+    <button id='edit'>View your submissions</button>
+    <button id='showQr'>Show Join QR Code</button>
+  </div>
   <!-- <p id='notice'>Board creators CANNOT add submissions. Please open a new tab and join as a guest to create a submission!</p> -->
   <form id='newSubForm'>
     <textarea id='submission' placeholder='What are your waiting for?! Start typing!'></textarea>
@@ -31,6 +34,11 @@
     <p id='subcount'>You have _ submissions.</p>
     <p id='closeEdit'>Close (Back to board)</p>
     <div id='submissionview'></div>
+  </div>
+  <div id='qrcode'>
+    <img id='closeQr' src='https://cdn.prestonkwei.com/close.png'>
+    <h3>Scan this QR Code using your device's camera to join this board.</h3>
+    <img id='qrimg' src=''>
   </div>
   <a href='https://qfreeaccountssjc1.az1.qualtrics.com/jfe/form/SV_0p7pL2ZORP5Vr6e?q1=whiteboard.prestonkwei.com'><p class='feedbacklink'>Leave Feedback!</p></a>
   <p id='static'></p>
