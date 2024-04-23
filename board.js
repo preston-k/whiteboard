@@ -78,17 +78,20 @@ dbRef.on('value', function(snapshot) {
         element.addEventListener('click', function() {
           let subId = this.id
           console.log(subId)
-          document.querySelector('#desktoptool').style.display = 'none'
-          document.querySelector('#boarddata').style.display = 'none' 
-          document.querySelector('#qrcode').style.display = 'none' 
-          document.querySelector('#joincode').style.display = 'none'
-          document.querySelector('#usercount').style.display = 'none' 
-          document.querySelector('#enlarged').style.display = 'flex'
+          
           let submissionPath = 'boards/'+joincode + '/data/' + subId + '/submitted'
           database.ref(submissionPath).once('value', (snapshot) => {
             let submission = snapshot.val()
             console.log(submission)
-            document.querySelector('#enlargedtext').innerHTML = submission
+            if (submission != null) {
+              document.querySelector('#enlargedtext').innerHTML = submission
+              document.querySelector('#desktoptool').style.display = 'none'
+              document.querySelector('#boarddata').style.display = 'none' 
+              document.querySelector('#qrcode').style.display = 'none' 
+              document.querySelector('#joincode').style.display = 'none'
+              document.querySelector('#usercount').style.display = 'none' 
+              document.querySelector('#enlarged').style.display = 'flex'
+            }
           })
         })
       })
@@ -98,6 +101,7 @@ dbRef.on('value', function(snapshot) {
           subId = subId.slice(13, 100)
           console.log(subId)
           firebase.database().ref(`boards/${joincode}/data/${subId}`).remove()
+          updateBoardData()
         })
       })
     })
@@ -127,7 +131,7 @@ document.querySelector('#createNew').addEventListener('click', createNew)
 document.querySelector('#close').addEventListener('click', () => {
   document.getElementById('newSubForm').style.display = 'none'
 })
-const blocklist = ['fuck', 'shit', 'ass', 'nigger', 'bitch', 'bastard', 'slut', 'dick', 'cunt', 'pussy', 'whore', 'fag', 'damn', 'douche', 'twat', 'cock', 'bollocks', 'arsehole', 'asshole', 'bugger', 'wanker', 'prick', 'tits', 'cum', 'boob', 'clit', 'fanny', 'piss', 'dildo', 'dyke', 'slag', 'motherfucker', 'goddamn', 'bint', 'bellend', 'muff', 'paki', 'chink', 'coon', 'kike', 'spic', 'faggot', 'poof', 'nonce', 'tranny', 'gringo', 'jizz', 'minge', 'nazi', 'bollock', 'bollox', 'shite', 'retard', 'cumshot', 'gook', 'beaner', 'skeet', 'tit', 'knob', 'felch', 'kunt', 'pecker', 'gooch', 'punani', 'taint', 'wang', 'wank', 'poon', 'schlong', 'fuckwit', 'poontang', 'gash', 'snatch', 'fuckboy', 'cumdump', 'shithead', 'fuckface', 'skank', 'hoe', 'bimbo', 'sod', 'coochie', 'thot', 'douchebag', 'arse'] // ChatGPT generated word list to block if these words get added to the submissions.
+const blocklist = ['fuck', 'shit', 'ass', 'nigger']//, 'bitch', 'bastard', 'slut', 'dick', 'cunt', 'pussy', 'whore', 'fag', 'damn', 'douche', 'twat', 'cock', 'bollocks', 'arsehole', 'asshole', 'bugger', 'wanker', 'prick', 'tits', 'cum', 'boob', 'clit', 'fanny', 'piss', 'dildo', 'dyke', 'slag', 'motherfucker', 'goddamn', 'bint', 'bellend', 'muff', 'paki', 'chink', 'coon', 'kike', 'spic', 'faggot', 'poof', 'nonce', 'tranny', 'gringo', 'jizz', 'minge', 'nazi', 'bollock', 'bollox', 'shite', 'retard', 'cumshot', 'gook', 'beaner', 'skeet', 'tit', 'knob', 'felch', 'kunt', 'pecker', 'gooch', 'punani', 'taint', 'wang', 'wank', 'poon', 'schlong', 'fuckwit', 'poontang', 'gash', 'snatch', 'fuckboy', 'cumdump', 'shithead', 'fuckface', 'skank', 'hoe', 'bimbo', 'sod', 'coochie', 'thot', 'douchebag', 'arse'] // ChatGPT generated word list to block if these words get added to the submissions.
 
 async function submitSubmission() {
   if (document.querySelector('#submission').value == '') {
