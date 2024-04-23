@@ -74,7 +74,24 @@ dbRef.on('value', function(snapshot) {
           element.style.display = 'block'
         });
       }
-      
+      document.querySelectorAll('.lineItem').forEach(element => {
+        element.addEventListener('click', function() {
+          let subId = this.id
+          console.log(subId)
+          document.querySelector('#desktoptool').style.display = 'none'
+          document.querySelector('#boarddata').style.display = 'none' 
+          document.querySelector('#qrcode').style.display = 'none' 
+          document.querySelector('#joincode').style.display = 'none'
+          document.querySelector('#usercount').style.display = 'none' 
+          document.querySelector('#enlarged').style.display = 'flex'
+          let submissionPath = 'boards/'+joincode + '/data/' + subId + '/submitted'
+          database.ref(submissionPath).once('value', (snapshot) => {
+            let submission = snapshot.val()
+            console.log(submission)
+            document.querySelector('#enlargedtext').innerHTML = submission
+          })
+        })
+      })
       document.querySelectorAll('.globalDelete').forEach(button => {
         button.addEventListener('click', function() {
           let subId = this.id
@@ -94,6 +111,18 @@ function createNew() {
   document.getElementById('newSubForm').style.display = 'block'
 }
 
+function closeenlarged() {
+  document.querySelector('#desktoptool').style.display = 'block'
+  document.querySelector('#boarddata').style.display = 'block' 
+  document.querySelector('#qrcode').style.display = 'none'  
+  document.querySelector('#enlarged').style.display = 'none'
+  if (username == null) {
+    if (uid == null) {
+      document.querySelector('#joincode').style.display = 'inline'
+      document.querySelector('#usercount').style.display = 'inline'
+    }
+  }
+}
 document.querySelector('#createNew').addEventListener('click', createNew)
 document.querySelector('#close').addEventListener('click', () => {
   document.getElementById('newSubForm').style.display = 'none'
@@ -316,3 +345,5 @@ function showQr() {
 
 document.querySelector('#showQr').addEventListener('click', showQr)
 document.querySelector('#closeQr').addEventListener('click', hideQr)
+
+document.querySelector('#closelarge').addEventListener('click', closeenlarged)

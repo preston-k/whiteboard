@@ -47,6 +47,7 @@ button {
   margin-right: auto;
   margin-top: 5px;
   margin-bottom: 5px;
+  cursor: pointer;
   /* background-color: lightgrey; */
   /* cursor: pointer; */
 }
@@ -176,5 +177,33 @@ button {
   right: 0;
   top: 0; 
   min-height: 20px;
+  cursor: pointer;
+}
+#enlarged {
+  width: 90%;
+  min-height: 47vw; 
+  border: 2px solid black;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 50px;
+  font-weight: 600;
+  display: none;
+  overflow-wrap: break-word;
+}
+#enlargedtext {
+  width: 90%;
+  text-align: center;
+}
+#closelarge {
+  height: 3%;
+  position: absolute;
+  right: 0;
+  top: 0; 
+  min-height: 50px;
+  min-width: 50px;
   cursor: pointer;
 }
