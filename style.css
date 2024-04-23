@@ -159,8 +159,8 @@ button {
   margin-right: auto;
   border: 2px solid black;
   position: relative;
+  min-width: 350px;
   display: none;
-  
 }
 #qrimg {
   display: block;
