@@ -61,6 +61,7 @@ button {
 .data {
   color: black;
   font-size: 24px;
+  overflow-wrap: anywhere;
 }
 #parti {
   font-size: 20px;
