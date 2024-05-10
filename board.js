@@ -338,7 +338,7 @@ document.querySelector('#changerole').addEventListener('click', changerole)
 let qrdata = 'https://whiteboard.prestonkwei.com/join?immediate=true&referrer=qr&jc=' + encodeURIComponent(urlParams.get('jc'))
 let imageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${encodeURIComponent(qrdata)}`
 
-document.getElementById('qrlink').innerHTML = imageUrl
+document.getElementById('boardlink').innerHTML = 'https://whiteboard.prestonkwei.com/join?immediate=true&referrer=qr&jc='+urlParams.get('jc')
 document.getElementById('qrimg').src = imageUrl
 
 function hideQr() {
