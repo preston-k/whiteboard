@@ -49,6 +49,7 @@ dbRef.on('value', function(snapshot) {
     const data = snapshot.val()
     console.log(data)
     usercount.innerHTML = 'Participants: '+ data
+    document.querySelector('#devstats-participants').innerHTML = '<span class=\'boldp\'>pcount:</span> ' + data
   })
   // Run code whenever the database is updated: 
   // TO DO:   1. Check under the board id/join code node, 2. look under data/, 3. count how many different nodes are under there, 4. add each node onto the screen.
@@ -373,6 +374,6 @@ document.querySelector('#devstats-version').innerHTML = '<span class=\'boldp\'>V
 document.querySelector('#devstats-uid').innerHTML = '<span class=\'boldp\'>uid:</span> ' + uid
 document.querySelector('#devstats-bid').innerHTML = '<span class=\'boldp\'>bid:</span> ' + board
 document.querySelector('#devstats-jc').innerHTML = '<span class=\'boldp\'>joincode:</span> ' + joincode
-document.querySelector('#devstats-participants').innerHTML = '<span class=\'boldp\'>pcount:</span> ' + board
+
 document.querySelector('#devstats-un').innerHTML = '<span class=\'boldp\'>un:</span> ' + username
 document.querySelector('#devstats-overallstatus').innerHTML = 'ALL SYSTEMS OK!'
