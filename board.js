@@ -356,3 +356,23 @@ document.querySelector('#showQr').addEventListener('click', showQr)
 document.querySelector('#closeQr').addEventListener('click', hideQr)
 
 document.querySelector('#closelarge').addEventListener('click', closeenlarged)
+
+let statsopen = false
+document.querySelector('#devinfo').addEventListener('click', () => {
+  console.log('Devinfo')
+  if (statsopen == true) {
+    document.querySelector('#hiddendev').style.display = 'none'
+    statsopen = false
+  } else if (statsopen == false) {
+    document.querySelector('#hiddendev').style.display = 'block'
+    statsopen = true
+  }
+  
+})
+document.querySelector('#devstats-version').innerHTML = '<span class=\'boldp\'>Version:</span> ' + version 
+document.querySelector('#devstats-uid').innerHTML = '<span class=\'boldp\'>uid:</span> ' + uid
+document.querySelector('#devstats-bid').innerHTML = '<span class=\'boldp\'>bid:</span> ' + board
+document.querySelector('#devstats-jc').innerHTML = '<span class=\'boldp\'>joincode:</span> ' + joincode
+document.querySelector('#devstats-participants').innerHTML = '<span class=\'boldp\'>pcount:</span> ' + board
+document.querySelector('#devstats-un').innerHTML = '<span class=\'boldp\'>un:</span> ' + username
+document.querySelector('#devstats-overallstatus').innerHTML = 'ALL SYSTEMS OK!'

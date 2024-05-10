@@ -9,6 +9,7 @@ staticinfo = 'Board ID: ' + boardId + ' || Join Code: ' + jc // + ' || Username:
 let role = ''
 if (userid == null) {
   staticinfo += ' || You have joined as a host.'
+  document.querySelector('#devstats-role').innerHTML = '<span class=\'boldp\'>Role:</span> HOST'
   role = 'host'
   document.querySelector('#showQr').style.display = 'block'
   document.querySelector('#joincode').style.display = 'inline'
@@ -16,6 +17,7 @@ if (userid == null) {
   document.querySelector('#usercount').style.display = 'inline'
 } else {
   staticinfo += ' || You have joined as a participant.'
+  document.querySelector('#devstats-role').innerHTML = '<span class=\'boldp\'>Role:</span>  PARTICIPANT'
   role = 'participant'
 }
 console.log(role)

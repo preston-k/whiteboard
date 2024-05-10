@@ -209,3 +209,50 @@ button {
   min-width: 50px;
   cursor: pointer;
 }
+#devinfo {
+  background-color: #7EC8E3;
+  height: 50px;
+  position: fixed;
+  right: 0;
+  width: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  transform: rotate(270deg);
+  border: 2px solid black;
+  border-bottom: 2px solid #7EC8E3;
+  border-radius: 5px 5px 0px 0px;
+  cursor: pointer;
+}
+#hiddendev {
+  border: 2px solid black;
+  padding: 10px;
+  width: max-content;
+  margin: 5px;
+  
+  display: none;
+}
+.devstats-p {
+  margin: 0;
+}
+.boldp {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+#devstats-overallstatus {
+  font-size: 16px;
+  font-weight: 700;
+  border: 2px solid black;
+  text-align: center;
+  background-color: lime;
+}
+#devstats-version {
+  font-weight: 700;
+  border: 2px solid black;
+  text-align: center;
+  background-color: yellow;
+}
+#githublink {
+  color: blue;
+}
