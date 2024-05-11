@@ -4,6 +4,8 @@ body {
   -webkit-font-smoothing: antialiased;
   /* background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(255,151,0,1) 100%); */
+  padding: 0;
+  margin: 0;
 }
 #static {
   position: fixed;
@@ -463,6 +465,10 @@ h3 {
 .about-text {
   font-size: 16px;
   text-align: center;
+  width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #savedboardsdiv {
@@ -527,4 +533,41 @@ h3 {
 }
 .a-no-underline {
   text-decoration: none;
+}
+#savedboards-title {
+  font-size: 30px;
+  margin: 0;
+  text-decoration: underline;
+}
+#savedcount {
+  margin: 0;
+  margin-bottom: 5px;
+}
+.about-head {
+  font-size: 30px;
+  text-decoration: underline;
+}
+#bottom {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  background-color: #93A29B;
+  border-top: 2px solid black;
+  height: 75px;
+  width: 100vw;
+  margin: 0;
+}
+#githublogo {
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#about-content-div {
+  height: calc(100vh - 75px);
+  position: fixed;
+  top: 0;
+  overflow: scroll;
 }
