@@ -276,6 +276,7 @@ button {
 }
 #title {
   text-align: center;
+  margin-bottom: 0;
 }
 #desc-rotate {
   text-align: center;
@@ -417,6 +418,12 @@ h3 {
   cursor: pointer;
   margin-right: 10px;
   margin-bottom: 10px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none; 
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; 
 }
 .buttonimg {
   height: 40px;
@@ -452,4 +459,72 @@ h3 {
     margin-right: 5px;
     width: 175px;
   }
+}
+.about-text {
+  font-size: 16px;
+  text-align: center;
+}
+
+#savedboardsdiv {
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  margin-top: 10px;
+  width: 50%;
+  min-width: 300px;
+  text-align: center;
+  padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  border-radius: 10px;
+}
+#underline-number {
+  text-decoration: underline;
+}
+
+#question-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.savedboard-preview {
+  width: 200px;
+  height: 50px;
+  border: 2px solid black;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 15px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+.trash {
+  position: absolute;
+  right: 0;
+  height: 30px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.trash:hover {
+  transform: rotate(10deg);
+}
+.saved-code {
+  font-size: 30px;
+  font-family: 'Courier';
+  color: black;
+  text-decoration: none !important;
+  
+}
+.a-no-underline {
+  text-decoration: none;
 }

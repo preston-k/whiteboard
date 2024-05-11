@@ -377,3 +377,21 @@ document.querySelector('#devstats-jc').innerHTML = '<span class=\'boldp\'>joinco
 
 document.querySelector('#devstats-un').innerHTML = '<span class=\'boldp\'>un:</span> ' + username
 document.querySelector('#devstats-overallstatus').innerHTML = 'ALL SYSTEMS OK!'
+
+document.querySelector('#saveboard').addEventListener('click', () => {
+  console.log('Save Board')
+  console.log(board +':'+joincode)
+  let count = parseInt(localStorage.getItem('savedboards-count'))+1
+  
+  let sbLocal = JSON.parse(localStorage.getItem('savedboards'))
+
+  let pushtolocal = { ...sbLocal }
+  pushtolocal = {
+    ...pushtolocal,
+    [joincode]: board 
+  }
+  
+  localStorage.setItem('savedboards', JSON.stringify(pushtolocal))
+  alert('Board sucessfully saved! We have saved your board, and you can view it on the homepage!')
+})
+

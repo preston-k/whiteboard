@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Whiteboard</title>
+  <title>Home || Whiteboard</title>
   <link rel="icon" href="https://cdn.prestonkwei.com/personalwebsitefavicon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins">
   <link href="style.css" rel="stylesheet" type="text/css" />
@@ -38,7 +38,7 @@
     </script>
   <fieldset id='fieldset-join'>
     <legend id='fieldset-join-title'>Join a Board</legend>
-    <h3 class='mar-top-none'>Join an existing board by entering a joincode below!</h3>
+    <h3 class='mar-top-none'>Join an existing board by ending a join code below!</h3>
     <form>
       <input type='number' placeholder='123456' id='jc'></input>
       <button type='submit' id='joinbut'>Join!</button>
@@ -51,9 +51,18 @@
       <div class='seperate'></div>
     </div> 
   </div>
-
-
   <button id='create'>Create a Board</button>
+
+  <div id='savedboardsdiv'>
+    <p id='savedcount'>You have saved <span id='underline-number'>0 boards</span> to your device.</p>
+    <div id='savedpreviews'></div>
+    <!-- <div class='savedboard-preview'>
+      <p class='saved-code'>123456</p>
+      <img src='https://cdn.prestonkwei.com/trashcan-icon.png' class='trash'>
+    </div> -->
+    <!-- LAST THING BELOW. DO NOT EDIT ANYTHING BELOW! -->
+    <img id='question-icon' src='https://cdn.prestonkwei.com/questionmark-icon-circle.png'>
+  </div>
   <!-- <p>Scan this QR code to visit this page</p> -->
   <!-- <img src='https://cdn.prestonkwei.com/whiteboardqr.png' class='qr'>
   <h4>Explaining to someone how to join your board? (yes, we know it's confusing!). Tell them to visit whiteboard.prestonkwei.com, or scan the qr code above!</h4> -->

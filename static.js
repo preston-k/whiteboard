@@ -19,6 +19,7 @@ if (userid == null) {
   staticinfo += ' || You have joined as a participant.'
   document.querySelector('#devstats-role').innerHTML = '<span class=\'boldp\'>Role:</span>  PARTICIPANT'
   role = 'participant'
+  document.querySelector('#saveboard').style.display = 'none'
 }
 console.log(role)
 staticbox.innerHTML = staticinfo
