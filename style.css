@@ -304,11 +304,25 @@ button {
   text-decoration: underline;
 }
 
-#seperate {
+.seperate {
   width: 100px;
-  height: 3px;
+  height: 2.5px;
   background-color: #FF674D;
   border: 0px solid black;
+  display: inline-block;
+}
+#hr-text {
+  display: inline;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  border: 2.5px solid #FF674D
+}
+#orselector {
+  display: flex;
+  align-items: center;
+  width: max-content;
 }
 #jc {
   width: 6em;
@@ -349,6 +363,7 @@ button {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 15px;
 
 }
 #fieldset-join-title {
@@ -358,6 +373,7 @@ button {
   padding-left: 10px;
   padding-right: 10px;
   border: 2px solid black;
+  border-radius: 5px;
 }
 h3 {
   text-align: center;
@@ -400,6 +416,7 @@ h3 {
   left: 0;
   cursor: pointer;
   margin-right: 10px;
+  margin-bottom: 10px;
 }
 .buttonimg {
   height: 40px;
@@ -429,4 +446,10 @@ h3 {
   padding-left: 5px;
   font-size: 14px;
   align-items: center;
+}
+@media (max-width: 640px) {
+  .image-button {
+    margin-right: 5px;
+    width: 175px;
+  }
 }
