@@ -2,6 +2,8 @@ body {
   font-family: 'Poppins';
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
+  /* background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 7%, rgba(255,151,0,1) 100%); */
 }
 #static {
   position: fixed;
@@ -196,6 +198,7 @@ button {
   font-weight: 600;
   display: none;
   overflow-wrap: break-word;
+  background-color: white;
 }
 #enlargedtext {
   width: 90%;
@@ -379,5 +382,48 @@ h3 {
   } 
   #desc-rotate {
     margin-right: 0;
+    font-size: 45px;
   }
+}
+
+.image-button {
+  display: inline-flex;
+  width: 200px;
+  border: 2px solid #F2AF29;
+  height: 50px;
+  border-radius: 15px;
+  /* justify-content: center; */
+  align-items: center;
+  left: 0;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.buttonimg {
+  height: 40px;
+  margin-left: 2.5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.buttontext {
+  margin-left: 2.5px;
+  font-weight: 700;
+}
+.button-leftdiv {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px 0 0 10px;
+  background-color: #F2AF29;
+  display: flex;
+  align-items: center;
+}
+.button-rightdiv {
+  display: flex;
+  height: 50px;
+  width: 150px;
+  border-radius: 0 10px 10px 0;
+  text-align: left;
+  padding-left: 5px;
+  font-size: 14px;
+  align-items: center;
 }

@@ -11,7 +11,7 @@ if (userid == null) {
   staticinfo += ' || You have joined as a host.'
   document.querySelector('#devstats-role').innerHTML = '<span class=\'boldp\'>Role:</span> HOST'
   role = 'host'
-  document.querySelector('#showQr').style.display = 'block'
+  document.querySelector('#showQr').style.display = 'inline-flex'
   document.querySelector('#joincode').style.display = 'inline'
   document.querySelector('#joincode').innerHTML = 'Join Code: '+jc+' || '
   document.querySelector('#usercount').style.display = 'inline'
