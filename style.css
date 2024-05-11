@@ -38,6 +38,7 @@ button {
 
 .lineItem {
   border: 2px solid black;
+  background-color: white;
   width: 75%;
   min-width: 350px;
   padding: 10px;
@@ -326,19 +327,57 @@ button {
   margin: 5px;
   margin-left: auto;
   margin-right: auto;
+  height: 35px;
+  width: 100px;
+  border: 2px solid black;
+  font-family: 'Poppins';
+  font-size: 18px;
+  border-radius: 15px;
+  background-color: #CAFEB9;
+  color: black;
 }
 #fieldset-join {
   border: 2px solid black;
+  width: 75vw;
+  min-width: 340px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
 }
 #fieldset-join-title {
   font-size: 18px;
-
+  font-weight: 700;
+  background-color: #CAFFB9;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 2px solid black;
 }
 h3 {
   text-align: center;
 }
 #descriptionrotation {
-  height: 100px;
+  /* height: 100px; */
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  white-space: nowrap;
+  margin-bottom: 5px;
+}
+.mar-top-none {
+  margin-top: 0;
+}
+
+@media (max-width: 720px) {
+  #word {
+    display: block;
+    text-wrap: wrap;
+    font-size: 27px;
+  }
+  #description-rotation {
+    flex-direction: column;
+  } 
+  #desc-rotate {
+    margin-right: 0;
+  }
 }
