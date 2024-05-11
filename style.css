@@ -256,3 +256,89 @@ button {
 #githublink {
   color: blue;
 }
+
+#create {
+  background-color: #CDC7E5;
+  font-family: 'Poppins';
+  font-size: 18px;
+  /* font-weight: 700; */
+  border: 2px solid black;
+  width: 200px;
+  border-radius: 15px;
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#title {
+  text-align: center;
+}
+#desc-rotate {
+  text-align: center;
+  font-size: 50px;
+  margin: 0;
+  display: inline;
+  margin-right: 15px;
+}
+
+#word-container {
+  overflow: hidden;
+  height: 75px;
+  text-align: center;
+  font-size: 50px;
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  transition: all 0.5s ease;
+}
+
+#word {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.5s ease-in-out;
+  color: #454E9E;
+  text-decoration: underline;
+}
+
+#seperate {
+  width: 100px;
+  height: 3px;
+  background-color: #FF674D;
+  border: 0px solid black;
+}
+#jc {
+  width: 6em;
+  font-family: 'Courier';
+  font-size: 30px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+::-webkit-inner-spin-button {
+  display: none;
+}
+#joinbut {
+  display: block;
+  margin: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#fieldset-join {
+  border: 2px solid black;
+}
+#fieldset-join-title {
+  font-size: 18px;
+
+}
+h3 {
+  text-align: center;
+}
+#descriptionrotation {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}

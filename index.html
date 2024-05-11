@@ -9,14 +9,47 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+  <h1 id='title'>WHITEBOARD</h1>
+  <div id='descriptionrotation'>
+    <h3 id='desc-rotate'>An easy way to </h3>
+    <div id="word-container">
+        <span id="word"></span>
+    </div>
+  </div>
+
+    <script>
+        let words = ['share ideas.', 'collaborate with coworkers.', 'engage with students.', 'host discussions.', 'create task boards.']
+        let currentWordIndex = 0
+
+        function rotateWord() {
+            const wordContainer = document.getElementById('word')
+            wordContainer.innerHTML = words[currentWordIndex]
+            wordContainer.style.transform = 'translateY(0)'
+
+            setTimeout(() => {
+                wordContainer.style.transform = 'translateY(-100%)'
+            }, 5000)
+
+            currentWordIndex = (currentWordIndex + 1) % words.length
+            setTimeout(rotateWord, 5500)
+        }
+
+        window.onload = rotateWord
+    </script>
+  <fieldset id='fieldset-join'>
+    <legend id='fieldset-join-title'>Join a Board</legend>
+    <h3>Join an existing board by entering a joincode below!</h3>
+    <form>
+      <input type='number' placeholder='123456' id='jc'></input>
+      <button type='submit' id='joinbut'>Join!</button>
+    </form>
+  </fieldset>
+    
+  <hr id='seperate'>
   <button id='create'>Create a Board</button>
-  <form>
-    <input type='number' placeholder='joincode' id='jc'></input>
-    <button type='submit' id='joinbut'>Join!</button>
-  </form>
-  <p>Scan this QR code to visit this page</p>
-  <img src='https://cdn.prestonkwei.com/whiteboardqr.png' class='qr'>
-  <h4>Explaining to someone how to join your board? (yes, we know it's confusing!). Tell them to visit whiteboard.prestonkwei.com, or scan the qr code above!</h4>
+  <!-- <p>Scan this QR code to visit this page</p> -->
+  <!-- <img src='https://cdn.prestonkwei.com/whiteboardqr.png' class='qr'>
+  <h4>Explaining to someone how to join your board? (yes, we know it's confusing!). Tell them to visit whiteboard.prestonkwei.com, or scan the qr code above!</h4> -->
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
