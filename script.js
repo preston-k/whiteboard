@@ -96,7 +96,7 @@ let addToPush = ''
 console.log(localBoards)
 for (let key in localBoards) {
   console.log(key + ':' + localBoards[key])
-  addToPush+=`<a class='a-no-underline' href='/board.html?id=${localBoards[key]}&jc=${key}'><div class='savedboard-preview'><p class='saved-code'>${key}</p><img src='https://cdn.prestonkwei.com/trashcan-icon.png' id='trash-${key}'class='trash'></div></a>`
+  addToPush+=`<a class='a-no-underline' href='/board.html?id=${localBoards[key]}&jc=${key}'><div class='savedboard-preview'><p class='saved-code'>${key}</p><img src='https://cdn.prestonkwei.com/trashcan-icon.svg' id='trash-${key}'class='trash'></div></a>`
   
 }
 

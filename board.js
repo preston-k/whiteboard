@@ -56,7 +56,7 @@ dbRef.on('value', function(snapshot) {
   // let user = database.ref('boards/'+joincode+'/users')
   let dataRef = database.ref('boards/'+joincode+'/data')
   let count = 0
-  dataRef.once('value', function(snapshot) {
+  dataRef.once('value', function update(snapshot) {
     let boardData = ''
     let dataCollection = []
     snapshot.forEach(function(childSnapshot) {
@@ -102,6 +102,7 @@ dbRef.on('value', function(snapshot) {
           subId = subId.slice(13, 100)
           console.log(subId)
           firebase.database().ref(`boards/${joincode}/data/${subId}`).remove()
+          update()
           updateBoardData()
         })
       })

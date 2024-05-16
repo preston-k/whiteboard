@@ -555,12 +555,12 @@ h3 {
   bottom: 0;
   background-color: #93A29B;
   border-top: 2px solid black;
-  height: 75px;
+  height: 50px;
   width: 100vw;
   margin: 0;
 }
 #githublogo {
-  height: 50px;
+  height: 45px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -570,4 +570,63 @@ h3 {
   position: fixed;
   top: 0;
   overflow: scroll;
+}
+
+#about-head {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 45px;
+  width: max-content;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#gohomeword {
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-orientation: mixed;
+  margin: 0
+}
+#gohome {
+  width: 100px;
+  border: 2px solid black;
+  height: 75px;
+  position: fixed;
+  top: 25px;
+  border-radius: 0 10px 10px 0;
+  border-left: none;
+  background-color: white;
+  cursor: pointer;
+  z-index: 99999;
+  display: flex;
+  left: -25px;
+  transform: translate(0, 0);
+  transition: 0.15s;
+}
+#words-home {
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  height: 75px;
+  font-size: 12px;
+}
+#gohomeright {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#words-home {
+  width: 25px;
+  height: 75px;
+}
+#homeimg {
+  width: 70px;
+}
+#gohome:hover{
+  transform: translate(25px, 0);
+  transition: 0.15s;
 }
